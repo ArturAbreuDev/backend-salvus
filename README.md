@@ -94,3 +94,10 @@ npm run dev
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
 | `id`      | `string` | **Obrigatório**. O ID do item que você quer deletar |
+
+
+## Aviso
+
+Acabei usando o Postgress porque nao achei nenhum banco de dados mysql que se encaixasse em producao e fosse de graça!
+
+Desde ja agradeço!
