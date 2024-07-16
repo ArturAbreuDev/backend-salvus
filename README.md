@@ -15,7 +15,7 @@ Este projeto é uma API RESTful simples criada usando Node.js e Express. A API p
 
 ### 1. Clonar o Repositório
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/ArturAbreuDev/backend-salvus.git
 ```
 ### 2. Instalar Dependências
 ```bash
