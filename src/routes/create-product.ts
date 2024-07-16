@@ -1,8 +1,8 @@
 import { Request, Response, Router } from 'express';
-import { z } from 'zod';
+import { z, ZodError } from 'zod';
 import { prisma } from '../lib/prisma';
 
-const router = Router();
+const router: Router = Router();
 
 const productSchema = z.object({
   name: z.string(),
@@ -14,7 +14,7 @@ router.post('/products', async (req: Request, res: Response) => {
   const result = productSchema.safeParse(req.body);
 
   if (!result.success) {
-    return res.status(400).json(result.error);
+    return res.status(400).json({ error: 'Invalid input', details: (result.error as ZodError).errors });
   }
 
   const { name, description, price } = result.data;
@@ -23,8 +23,12 @@ router.post('/products', async (req: Request, res: Response) => {
       data: { name, description, price },
     });
     res.status(201).json(newProduct);
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to create product' });
+  } catch (error: any) {
+    if (error.code === 'P2002') {
+      res.status(409).json({ error: 'Product with the same name already exists' });
+    } else {
+      res.status(500).json({ error: 'Failed to create product' });
+    }
   }
 });
 
