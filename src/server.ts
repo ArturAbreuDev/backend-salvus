@@ -5,8 +5,12 @@ import getProduct from "./routes/get-product";
 import deleteProduct from "./routes/delete-product";
 import updateProduct from "./routes/update-product";
 import { env } from './env'
+import cors from 'cors';
 
-const app: Express = express();
+
+const app: Express = express()
+
+app.use(cors());
 
 app.use(express.json());
 
