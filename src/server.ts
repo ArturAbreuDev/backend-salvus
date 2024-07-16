@@ -3,6 +3,7 @@ import getProducts from "./routes/get-products";
 import getProduct from "./routes/get-product";
 import deleteProduct from "./routes/delete-product";
 import updateProduct from "./routes/update-product";
+import { env } from './env'
 
 const express = require("express");
 const app = express();
@@ -16,6 +17,6 @@ app.use(deleteProduct);
 app.use(updateProduct);
 
 
-app.listen(3333, () => {
-  console.log(`server running at 3333`);
+app.listen(env.PORT, () => {
+  console.log(`server running at ${env.PORT}`);
 });
